@@ -60,6 +60,18 @@ fn main() {
             food = (rng.gen::<i8>().abs() % WIDTH, rng.gen::<i8>().abs() % HEIGHT);
             println!("Food eaten {:?}", food);
         }
+
+        // Check if snake hits wall
+        if head.0 < 0 || head.0 >= WIDTH || head.1 < 0 || head.1 >= HEIGHT {
+            println!("Game Over");
+            break;
+        }
+        
+        // Check if snake hits itself
+        if snake.len() != snake.iter().collect::<std::collections::HashSet<_>>().len() {
+            println!("Game Over");
+            break;
+        }
     }
 }
 
